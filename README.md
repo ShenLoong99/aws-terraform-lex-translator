@@ -1,5 +1,18 @@
 <a id="readme-top"></a>
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Unlicense License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 <div>
+   <p>
+      <strong>Notice:</strong> This project has been migrated from a monolithic collection at <a href="https://github.com/ShenLoong99/my-terraform-aws-projects-2025">my-terraform-aws-projects-2025</a> to this dedicated repository for better project isolation and CI/CD management.<br>
+      To review the full development lifecycle, including initial architectural decisions and incremental code changes, please refer to the original commit history in the source repository.
+   </p>
+  
    <h1>🤖 AWS Lex AI-Translator Bot</h1>
    <p align="center">
     <img src="assets/aws-lex-chatbot-cover.png" alt="aws-lex-chatbot-cover" width="800">
@@ -13,6 +26,7 @@
       <li><a href="#built-with">Built With</a></li>
       <li><a href="#use-cases">Use Cases</a></li>
       <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#file-structure">File Structure</a></li>
       <li><a href="#getting-started">Getting Started</a></li>
       <li><a href="#usage">Usage & Testing</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
@@ -20,6 +34,7 @@
       <li><a href="#contact">Contact</a></li>
    </ol>
 </details>
+
 <h2 id="about-the-project">About The Project</h2>
 <p> This project showcases an advanced <strong>Serverless AWS architecture</strong> managed through <strong>Infrastructure as Code (IaC)</strong>. Unlike standard automation, this project utilizes a professional "Hybrid" deployment model: critical infrastructure (IAM, Lambda, Logging) is managed via <strong>Terraform</strong>, while the high-iteration Conversational Design (Intents, Slots, Utterances) is refined within the <strong>AWS Lex V2 Console</strong> for rapid testing. </p>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
@@ -41,6 +56,7 @@
    <li><strong>CloudWatch Logs:</strong> Explicitly managed in Terraform to ensure full observability and clean removal upon destruction.</li>
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="use-cases">Use Cases</h2>
 <ul>
    <li><strong>Global Business Operations:</strong> Facilitates seamless communication between companies and their international clients by bridging language gaps in real-time.</li>
@@ -52,6 +68,7 @@
    <li><strong>Tailored Services:</strong> Businesses can define their own terminology and rules—such as keeping brand names untranslated—to ensure the output remains contextual and accurate to their brand.</li>
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="architecture">Architecture</h2>
 <img src="assets/AWS-lex-translator.jpg" alt="aws-lex-chatbot-cover" width="800">
 <p> The architecture is built for high availability and least-privilege security: </p>
@@ -63,6 +80,24 @@
    <li><strong>Response:</strong> The translated text is wrapped in a Lex-compliant JSON structure and returned to the user.</li>
 </ol>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+<h2 id="file-structure">File Structure</h2>
+<pre>
+   .
+   ├── assets/                     # Architecture diagrams, UI screenshots, and bot cover images
+   ├── lambda/                     # Serverless Fulfillment Logic
+   │   ├── lambda_function.py      # Python logic for Lex fulfillment & Translate API integration
+   │   └── lambda_function.zip     # Compressed deployment package for AWS Lambda
+   ├── main.tf                     # Core Infrastructure: IAM Roles, Lambda function, and triggers
+   ├── outputs.tf                  # Provides Lambda ARN and IAM Role details for Lex Console linking
+   ├── terraform.tf                # Terraform Cloud backend configuration and provider requirements
+   ├── variables.tf                # Configurable parameters (AWS Region, Resource Tags)
+   ├── .gitignore                  # Prevents tracking of local terraform state and .env files
+   ├── .terraform.lock.hcl         # Lock file for ensuring consistent provider versions
+   └── README.md                   # Project documentation and step-by-step setup guide
+</pre>
+<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="getting-started">Getting Started</h2>
 <h3>1. Prerequisites</h3>
 <ul>
@@ -162,8 +197,8 @@
     <img src="assets/aws-console-fulfillment.png" alt="aws-console-slot-type-config-page" width="400" />
   </li>
 </ol>
-
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="usage">Usage & Testing</h2>
 <h3>Boundary Test (Slot Elicitation): </h3>
 <ol>
@@ -216,6 +251,7 @@
    </li>
 </ol>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="roadmap">Roadmap</h2>
 <ul>
    <li>[x] Provision IAM roles and least-privilege policies via Terraform.</li>
@@ -224,6 +260,7 @@
    <li>[x] Configure Lex V2 Slot Elicitation for "phrase" and "target_language".</li>
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="cost-optimization">Cost Optimization</h2>
 <ul>
    <li><strong>Resource Limits:</strong> Lambda is restricted to 128MB memory and a 10s timeout to prevent runaway billing.</li>
@@ -231,7 +268,21 @@
    <li><strong>Explicit Cleanup:</strong> Every resource, including auto-generated log groups, is tracked by Terraform to ensure $0 residual cost after <code>terraform destroy</code>.</li>
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
 <h2 id="contact">Contact</h2>
 <p>Tan Si Kai - <a href="https://linkedin.com/in/si-kai-tan">LinkedIn</a></p>
-<p>Project Link: <a href="https://github.com/ShenLoong99/my-terraform-aws-projects-2025/tree/main/AWS-lex-translator">AWS Lex AI-Translator Repo</a></p>
+<p>Project Link: <a href="https://github.com/ShenLoong99/aws-terraform-lex-translator">AWS Lex AI-Translator Repo</a></p>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+[contributors-shield]: https://img.shields.io/github/contributors/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
+[contributors-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
+[forks-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/network/members
+[stars-shield]: https://img.shields.io/github/stars/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
+[stars-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
+[issues-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/issues
+[license-shield]: https://img.shields.io/github/license/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
+[license-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/https://linkedin.com/in/si-kai-tan

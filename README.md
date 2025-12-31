@@ -270,7 +270,7 @@ export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
       <strong>The Second Elicitation (Turn 3):</strong> 
       <ul>
          <li><strong>Bot Responds:</strong> <code>"What language should I translate it to?"</code></li>
-         <li><strong>User Types:</strong> <code>"Spanish"</code> or <code>es</code></li>
+         <li><strong>User Types:</strong> <code>Spanish</code> or <code>es</code></li>
          <li><strong>What to look for:</strong> Once this last piece of data is collected, Lex should finally trigger the Fulfillment (calling your Lambda function).</li>
       </ul>
    </li>

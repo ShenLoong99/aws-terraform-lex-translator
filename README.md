@@ -32,7 +32,6 @@
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#challenges-faced">Challenges</a></li>
       <li><a href="#cost-optimization">Cost Optimization</a></li>
-      <li><a href="#contact">Contact</a></li>
    </ol>
 </details>
 
@@ -83,19 +82,18 @@
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="file-structure">File Structure</h2>
-<pre>
-   .
-   ├── assets/                     # Architecture diagrams, UI screenshots, and bot cover images
-   ├── lambda/                     # Serverless Fulfillment Logic
-   │   ├── lambda_function.py      # Python logic for Lex fulfillment & Translate API integration
-   │   └── lambda_function.zip     # Compressed deployment package for AWS Lambda
-   ├── main.tf                     # Core Infrastructure: IAM Roles, Lambda function, and triggers
-   ├── outputs.tf                  # Provides Lambda ARN and IAM Role details for Lex Console linking
-   ├── terraform.tf                # Terraform Cloud backend configuration and provider requirements
-   ├── variables.tf                # Configurable parameters (AWS Region, Resource Tags)
-   ├── .gitignore                  # Prevents tracking of local terraform state and .env files
-   ├── .terraform.lock.hcl         # Lock file for ensuring consistent provider versions
-   └── README.md                   # Project documentation and step-by-step setup guide
+<pre>.
+├── assets/                     # Architecture diagrams, UI screenshots, and bot cover images
+├── lambda/                     # Serverless Fulfillment Logic
+│   ├── lambda_function.py      # Python logic for Lex fulfillment & Translate API integration
+│   └── lambda_function.zip     # Compressed deployment package for AWS Lambda
+├── main.tf                     # Core Infrastructure: IAM Roles, Lambda function, and triggers
+├── outputs.tf                  # Provides Lambda ARN and IAM Role details for Lex Console linking
+├── terraform.tf                # Terraform Cloud backend configuration and provider requirements
+├── variables.tf                # Configurable parameters (AWS Region, Resource Tags)
+├── .gitignore                  # Prevents tracking of local terraform state and .env files
+├── .terraform.lock.hcl         # Lock file for ensuring consistent provider versions
+└── README.md                   # Project documentation and step-by-step setup guide
 </pre>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
@@ -347,11 +345,6 @@ export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
-<h2 id="contact">Contact</h2>
-<p>Tan Si Kai - <a href="https://linkedin.com/in/si-kai-tan">LinkedIn</a></p>
-<p>Project Link: <a href="https://github.com/ShenLoong99/aws-terraform-lex-translator">AWS Lex AI-Translator Repo</a></p>
-<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
-
 [contributors-shield]: https://img.shields.io/github/contributors/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
 [contributors-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
@@ -363,4 +356,4 @@ export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
 [license-shield]: https://img.shields.io/github/license/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
 [license-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/https://linkedin.com/in/si-kai-tan
+[linkedin-url]: https://linkedin.com/in/si-kai-tan

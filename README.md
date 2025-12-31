@@ -30,6 +30,7 @@
       <li><a href="#getting-started">Getting Started</a></li>
       <li><a href="#usage">Usage & Testing</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#challenges-faced">Challenges</a></li>
       <li><a href="#cost-optimization">Cost Optimization</a></li>
       <li><a href="#contact">Contact</a></li>
    </ol>
@@ -99,25 +100,73 @@
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="getting-started">Getting Started</h2>
-<h3>1. Prerequisites</h3>
+<h3>Prerequisites</h3>
 <ul>
    <li><strong>Terraform CLI (v1.0+) / Terraform Cloud(optional)</strong> for IaC deployment.</li>
    <li><strong>AWS CLI</strong> configured with appropriate credentials.</li>
    <li><strong>Python 3.9+</strong> for Lambda development.</li>
+   <li><strong>Set your AWS Region:</strong> Set to whatever <code>aws_region</code> you want in <code>variables.tf</code>.</li>
 </ul>
-<h3>2. Installation & Deployment</h3>
+
+<h3>Terraform State Management</h3>
+<p>Select one:</p>
+<ol>
+   <li>Terraform Cloud</li>
+   <li>Terraform Local CLI</li>
+</ol>
+
+<h4>Terraform Cloud Configuration</h4>
+<p>If you choose Terraform Cloud, please follow the steps below:</p>
+<ol>
+   <li>Create a new <strong>Workspace</strong> in Terraform Cloud.</li>
+   <li>In the Variables tab, add the following <strong>Terraform Variables:</strong>
+   </li>
+   <li>
+    Add the following <strong>Environment Variables</strong> (AWS Credentials):
+    <ul>
+      <li><code>AWS_ACCESS_KEY_ID</code></li>
+      <li><code>AWS_SECRET_ACCESS_KEY</code></li>
+   </ul>
+   </li>
+</ol>
+
+<h4>Terraform Local CLI Configuration</h4>
+<p>If you choose Terraform Local CLI, please follow the steps below:</p>
+<ol>
+   <li>
+      Comment the <code>backend</code> block in <code>terraform.tf</code>:
+      <pre># backend "remote" {
+#     hostname     = "app.terraform.io"
+#     organization = "my-terraform-aws-projects-2025"
+#     workspaces {
+#     name = "AWS-lex-translator"
+#     }
+# }</pre>
+   </li>
+   <li>
+    Add the following <strong>Environment Variables</strong> (AWS Credentials):
+    <pre>git bash command:
+export AWS_ACCESS_KEY_ID=&lt;your-aws-access-key-id&gt;
+export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
+</ol>
+
+<h3>Installation & Deployment</h3>
 <ol>
    <li>Clone the repository.</li>
    <li>
-      Initialize the environment: 
-      <pre>terraform init</pre>
-   </li>
-   <li>
-      Apply the backend infrastructure: 
-      <pre>terraform apply</pre>
+      <strong>Provision Infrastructure:</strong>
+      <ul>
+         <li>
+         <strong>Terraform Cloud</strong> → <strong>Initialize & Apply:</strong> Push your code to GitHub. Terraform Cloud will automatically detect the change, run a <code>plan</code>, and wait for your approval.
+         </li>
+         <li>
+         <strong>Terraform CLI</strong> → <strong>Initialize & Apply:</strong> Run <code>terraform init</code> → <code>terraform plan</code> → <code>terraform apply</code>, and wait for your approval.
+         </li>
+      </ul>
    </li>
 </ol>
-<h3>3. Configure Lex V2 Console</h3>
+
+<h3>Configure Lex V2 Console</h3>
 <p>Follow these steps to build the conversational layer: </p>
 <h4>Create Bot: </h4>
 <ol>
@@ -259,6 +308,35 @@
    <li>[x] Implement automatic source language detection using Amazon Comprehend permissions.</li>
    <li>[x] Configure Lex V2 Slot Elicitation for "phrase" and "target_language".</li>
 </ul>
+<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+<h2 id="challenges-faced">Challenges</h2>
+<table>
+   <thead>
+      <tr>
+         <th>Challenge</th>
+         <th>Solution</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><strong>Hidden Dependency Error</strong></td>
+         <td> Encountered an <code>AccessDeniedException</code> for <code>comprehend:DetectDominantLanguage</code>. I identified that using <code>"auto"</code> detection in Amazon Translate triggers a background call to <strong>Amazon Comprehend</strong>, and resolved it by adding the specific permission to the IAM policy. </td>
+      </tr>
+      <tr>
+         <td><strong>Infrastructure Drift & Costs</strong></td>
+         <td> Manual configuration of CloudWatch logs often leaves "ghost" resources after a project is finished. I implemented explicit <strong>Log Group management</strong> in Terraform with a 7-day retention to ensure 100% cost-free cleanup upon <code>terraform destroy</code>. </td>
+      </tr>
+      <tr>
+         <td><strong>Concurrency Limits</strong></td>
+         <td> Faced an <code>InvalidParameterValueException</code> when attempting to reserve Lambda concurrency on a restricted account. I adjusted the configuration to use <strong>unreserved concurrency</strong> to maintain the account's required minimum shared capacity. </td>
+      </tr>
+      <tr>
+         <td><strong>Lex V2 Fulfillment Link</strong></td>
+         <td> Manually linking Lex to Lambda can be prone to permission errors. I utilized <code>aws_lambda_permission</code> in Terraform to programmatically allow <code>lexv2.amazonaws.com</code> to invoke the fulfillment function. </td>
+      </tr>
+   </tbody>
+</table>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="cost-optimization">Cost Optimization</h2>

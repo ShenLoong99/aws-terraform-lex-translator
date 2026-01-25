@@ -2,11 +2,11 @@ name: "Production Deployment"
 on:
   push:
     branches: [ main ]
-    paths:
-      - "**.tf"
-      - "lambda/**"
-      - ".github/workflows/cd.yml"
-      - 'scripts/**'
+    # paths:
+    #   - "**.tf"
+    #   - "lambda/**"
+    #   - ".github/workflows/cd.yml"
+    #   - 'scripts/**'
   workflow_dispatch:
 
 jobs:

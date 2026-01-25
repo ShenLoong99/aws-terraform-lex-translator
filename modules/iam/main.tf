@@ -1,4 +1,7 @@
-# --- IAM Role for Lambda ---
+# Data block to find account ID
+data "aws_caller_identity" "current" {}
+
+# IAM Role for Lambda
 resource "aws_iam_role" "lambda_exec_role" {
   name = "lex_translator_lambda_role"
 
@@ -15,7 +18,7 @@ resource "aws_iam_role" "lambda_exec_role" {
   })
 }
 
-# --- Permissions: CloudWatch Logs & Amazon Translate ---
+# Permissions: CloudWatch Logs & Amazon Translate
 resource "aws_iam_policy" "lambda_logging_translate" {
   name        = "${var.project_name}-policy" # Use variable for naming consistency [cite: 9]
   description = "Allows Lambda to log, translate text, and detect languages"
@@ -38,22 +41,26 @@ resource "aws_iam_policy" "lambda_logging_translate" {
           "translate:TranslateText",
           "comprehend:DetectDominantLanguage"
         ],
+        # checkov:skip=CKV_AWS_355: Translate/Comprehend are global services without specific resource ARNs
         Resource = "*" # Translate is a global service and often requires "*"
       }
     ]
   })
 }
 
-# --- Attach IAM Policy to Role ---
+# Attach IAM Policy to Role
 resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_exec_role.name
   policy_arn = aws_iam_policy.lambda_logging_translate.arn
 }
 
-# --- Lex Permission to Invoke Lambda ---
+# Lex Permission to Invoke Lambda
 resource "aws_lambda_permission" "allow_lex" {
   statement_id  = "AllowExecutionFromLex"
   action        = "lambda:InvokeFunction"
   function_name = var.function_name
-  principal     = "lex.amazonaws.com"
+  principal     = "lexv2.amazonaws.com" # Note: Use lexv2 for modern bots
+
+  # Specify your account ID or the specific Bot ARN to restrict access
+  source_arn = "arn:aws:lex:${var.aws_region}:${data.aws_caller_identity.current.account_id}:bot-alias/*"
 }

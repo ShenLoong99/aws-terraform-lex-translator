@@ -22,7 +22,7 @@ module "iam" {
 module "lambda" {
   source       = "./modules/lambda"
   iam_role_arn = module.iam.iam_role_arn
-  lambda_logs  = aws_cloudwatch_log_group.lambda_logs
+  lambda_logs  = aws_cloudwatch_log_group.lambda_logs.name
   aws_region   = var.aws_region
   default_tags = local.common_tags
 }

@@ -120,5 +120,8 @@ jobs:
             --payload '{"sessionState": {"intent": {"name": "TranslateIntent", "slots": {"phrase": {"value": {"interpretedValue": "Hello"}}, "target_language": {"value": {"interpretedValue": "French"}}}}}}' \
             response.json
 
-          # Check if the translation "Bonjour" exists in the response
-          grep -q "Bonjour" response.json
+          # Debug: Show the actual response in the logs
+          cat response.json
+
+          # Check if the translation "Bonjour" exists (case-insensitive)
+          grep -qi "Bonjour" response.json

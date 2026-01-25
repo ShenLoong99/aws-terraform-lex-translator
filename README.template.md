@@ -121,6 +121,8 @@
 │       ├── outputs.tf                     # Values exported to the root
 │       ├── providers.tf                   # Version constraints (No cloud block!)
 │       └── variables.tf                   # Module inputs
+├── scripts/                               # Child Modules (Stateless Logic)
+│   └── verify_and_test.sh                 # Verify and test scripts for post deployment
 ├── .checkov.yml                           # List of rules to skip in Checkov analysis
 ├── .terraform.lock.hcl                    # Ensures consistent provider versions across environments
 ├── .gitignore                             # Prevents config.json & .tfstate from being pushed
@@ -321,7 +323,7 @@ This section is automatically updated with the latest infrastructure details.
       <li><strong>Tool:</strong> Terraform Cloud + GitHub Actions OIDC.</li>
       <li><strong>Trigger:</strong> Merges to the <code>main</code> branch.</li>
       <li>
-        <strong>Outcome:</strong> The pipeline verifies the infrastructure state and runs a post-deployment health check (<code>verify-lambda.sh</code> & <code>verify-role.sh</code>) to confirm the Rekognition service is responding.
+        <strong>Outcome:</strong> The pipeline verifies the infrastructure state and runs a post-deployment health check (<code>verify_and_test.sh</code>) to confirm the Rekognition service is responding.
       </li>
     </ul>
   </li>

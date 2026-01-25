@@ -102,26 +102,9 @@ jobs:
           role-to-assume: arn:aws:iam::871308866502:role/GitHubActionRole
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Verify Lex-Lambda Permission
+      - name: Verify and Test Backend
+        env:
+          FUNCTION_NAME: ${{ env.FUNCTION_NAME }}
         run: |
-          POLICY=$(aws lambda get-policy --function-name ${{ env.FUNCTION_NAME }} --query 'Policy' --output text)
-          if echo "$POLICY" | grep -q "lexv2.amazonaws.com"; then
-            echo "Permission verified: Lex is authorized to invoke Lambda."
-          else
-            echo "Error: Lex permission missing from Lambda policy!"
-            exit 1
-          fi
-
-      - name: Test Translation Logic (Integration Test)
-        run: |
-          aws lambda invoke \
-            --function-name ${{ env.FUNCTION_NAME }} \
-            --cli-binary-format raw-in-base64-out \
-            --payload '{"sessionState": {"intent": {"name": "TranslateIntent", "slots": {"phrase": {"value": {"interpretedValue": "Hello"}}, "target_language": {"value": {"interpretedValue": "French"}}}}}}' \
-            response.json
-
-          # Debug: Show the actual response in the logs
-          cat response.json
-
-          # Check if the translation "Bonjour" exists (case-insensitive)
-          grep -qi "Bonjour" response.json
+          chmod +x ./scripts/verify_and_test.sh
+          ./scripts/verify_and_test.sh

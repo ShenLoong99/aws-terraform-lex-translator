@@ -4,7 +4,7 @@ locals {
     Project     = var.project_name
     Environment = "Prod"
     ManagedBy   = "Terraform"
-    Owner       = "Sky"
+    Owner       = "ShenLoong"
   }
 }
 

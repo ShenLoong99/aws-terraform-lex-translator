@@ -1,4 +1,5 @@
 <a id="readme-top"></a>
+<div align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -7,17 +8,30 @@
 [![Unlicense License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<div>
-   <p>
-      <strong>Notice:</strong> This project has been migrated from a monolithic collection at <a href="https://github.com/ShenLoong99/my-terraform-aws-projects-2025">my-terraform-aws-projects-2025</a> to this dedicated repository for better project isolation and CI/CD management.<br>
-      To review the full development lifecycle, including initial architectural decisions and incremental code changes, please refer to the original commit history in the source repository.
-   </p>
-
    <h1>🤖 AWS Lex AI-Translator Bot</h1>
-   <p align="center">
-    <img src="assets/aws-lex-chatbot-cover.png" alt="aws-lex-chatbot-cover" width="800">
-   </p>
-   <p> The <strong>AWS Lex AI-Translator</strong> is a sophisticated serverless solution that leverages natural language understanding (NLU) to translate user phrases into multiple languages instantly. By combining <strong>Amazon Lex V2</strong> for conversation management and <strong>Amazon Translate</strong> for high-fidelity linguistics, this project demonstrates a production-ready "Hybrid" IaC workflow. <br /> <a href="#about-the-project"><strong>Explore the docs »</strong></a> </p>
+   <img src="assets/aws-lex-chatbot-cover.png" alt="aws-lex-chatbot-cover" />
+   <p>The <strong>AWS Lex AI-Translator</strong> is a sophisticated serverless solution that leverages natural language understanding (NLU) to translate user phrases into multiple languages instantly. By combining <strong>Amazon Lex V2</strong> for conversation management and <strong>Amazon Translate</strong> for high-fidelity linguistics, this project demonstrates a production-ready "Hybrid" IaC workflow.</p>
+
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+<br>
+
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)<br>
+[![Infrastructure CI][ci-shield]][ci-url]
+[![Production Deployment][cd-shield]][cd-url]
+[![Update Documentation][docs-shield]][docs-url]
+
+<br>
+
+![Last Commit](https://img.shields.io/github/last-commit/{{GITHUB_USER}}/{{REPO_NAME}}?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/{{GITHUB_USER}}/{{REPO_NAME}}?style=for-the-badge)
+![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge&logo=pre-commit&logoColor=white)
+[![Checkov Security](https://img.shields.io/badge/Checkov-Secured-brightgreen?style=for-the-badge&logo=checkov&logoColor=white)](https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/ci.yml)
+
+<a href="#about-the-project"><strong>Explore the docs »</strong></a>
+
 </div>
 <details>
    <summary>Table of Contents</summary>
@@ -27,17 +41,26 @@
       <li><a href="#use-cases">Use Cases</a></li>
       <li><a href="#architecture">Architecture</a></li>
       <li><a href="#file-structure">File Structure</a></li>
+      <li><a href="#technical">Technical Reference</a></li>
       <li><a href="#getting-started">Getting Started</a></li>
-      <li><a href="#usage">Usage & Testing</a></li>
+      <li><a href="#gitops">GitOps & CI/CD Workflow</a></li>
+      <li><a href="#usage">Usage</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#challenges-faced">Challenges</a></li>
       <li><a href="#cost-optimization">Cost Optimization</a></li>
+      <li><a href="#acknowledgements">Acknowledgements</a></li>
    </ol>
 </details>
 
 <h2 id="about-the-project">About The Project</h2>
-<p> This project showcases an advanced <strong>Serverless AWS architecture</strong> managed through <strong>Infrastructure as Code (IaC)</strong>. Unlike standard automation, this project utilizes a professional "Hybrid" deployment model: critical infrastructure (IAM, Lambda, Logging) is managed via <strong>Terraform</strong>, while the high-iteration Conversational Design (Intents, Slots, Utterances) is refined within the <strong>AWS Lex V2 Console</strong> for rapid testing. </p>
-<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+<p>
+   This project showcases an advanced <strong>Serverless AWS architecture</strong> managed through <strong>Infrastructure as Code (IaC)</strong>. Unlike standard automation, this project utilizes a professional "Hybrid" deployment model: critical infrastructure (IAM, Lambda, Logging) is managed via <strong>Terraform</strong>, while the high-iteration Conversational Design (Intents, Slots, Utterances) is refined within the <strong>AWS Lex V2 Console</strong> for rapid testing.
+</p>
+<p>
+   <strong>Notice:</strong> This project has been migrated from a monolithic collection at <a href="https://github.com/ShenLoong99/my-terraform-aws-projects-2025">my-terraform-aws-projects-2025</a> to this dedicated repository for better project isolation and CI/CD management.<br>
+   To review the full development lifecycle, including initial architectural decisions and incremental code changes, please refer to the original commit history in the source repository.
+</p>
+
 <h2 id="built-with">Built With</h2>
 <p>
    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" alt="terraform" width="45" height="45" style="margin: 10px;"/>
@@ -70,7 +93,7 @@
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="architecture">Architecture</h2>
-<img src="assets/AWS-lex-translator.jpg" alt="aws-lex-chatbot-cover" width="800">
+<img src="assets/AWS-lex-translator.jpg" alt="aws-lex-chatbot-cover" />
 <p> The architecture is built for high availability and least-privilege security: </p>
 <ol>
    <li><strong>Interaction:</strong> The user speaks or types a phrase into the Lex V2 interface.</li>
@@ -82,19 +105,49 @@
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="file-structure">File Structure</h2>
-<pre>.
-├── assets/                     # Architecture diagrams, UI screenshots, and bot cover images
-├── lambda/                     # Serverless Fulfillment Logic
-│   ├── lambda_function.py      # Python logic for Lex fulfillment & Translate API integration
-│   └── lambda_function.zip     # Compressed deployment package for AWS Lambda
-├── main.tf                     # Core Infrastructure: IAM Roles, Lambda function, and triggers
-├── outputs.tf                  # Provides Lambda ARN and IAM Role details for Lex Console linking
-├── terraform.tf                # Terraform Cloud backend configuration and provider requirements
-├── variables.tf                # Configurable parameters (AWS Region, Resource Tags)
-├── .gitignore                  # Prevents tracking of local terraform state and .env files
-├── .terraform.lock.hcl         # Lock file for ensuring consistent provider versions
-└── README.md                   # Project documentation and step-by-step setup guide
+<pre>aws-terraform-lex-translator
+├── .github/workflows/                     # GitHub Actions CI/CD workflows
+│   ├── ci.yml                             # CI: Lints, formats, and validates Terraform code
+│   ├── documentation.yml                  # Auto-updates README with terraform-docs
+│   └── cd.yml                             # Production deployment & verification
+├── assets/                                # Architecture diagrams and UI screenshots
+├── modules/                               # Child Modules (Stateless Logic)
+│   ├── iam/                               # Least-privilege Roles & Policies
+│   └── lambda/                            # Lambda Compute & Trigger setup
+│       └── lambda/                        # Serverless backend logic
+│           ├── lambda_function.py         # Lambda Python source code
+│           └── lambda_function.zip        # Compiled deployment artifact
+│       ├── main.tf                        # Module-specific resources
+│       ├── outputs.tf                     # Values exported to the root
+│       ├── providers.tf                   # Version constraints (No cloud block!)
+│       └── variables.tf                   # Module inputs
+├── .checkov.yml                           # List of rules to skip in Checkov analysis
+├── .terraform.lock.hcl                    # Ensures consistent provider versions across environments
+├── .gitignore                             # Prevents config.json & .tfstate from being pushed
+├── .pre-commit-config.yml                 # Runs a series of checks (hooks) locally before every git commit
+├── .terraform-docs.yml                    # Configurations for dynamic generated terraform content and file for readme
+├── .tflint.hcl                            # Configuration for TFLint
+├── main.tf                                # Configuration & definitions for modules
+├── outputs.tf                             # Exported ARNs and Names for GitOps
+├── providers.tf                           # AWS & Archive provider configurations
+├── variables.tf                           # Project-wide input variables
+├── .terraform.lock.hcl                    # Provider lock file
+├── terraform.tfstate                      # Local state file (if not using cloud)
+├── terraform.tfstate.backup               # Previous state snapshot
+├── README.template.md                     # Manual documentation source
+└── README.md                              # Auto-generated final documentation
 </pre>
+<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+<h2 id="technical">Technical Reference</h2>
+This section is automatically updated with the latest infrastructure details.
+<details>
+<summary><b>Detailed Infrastructure Specifications</b></summary>
+
+<!-- BEGIN_TF_DOCS -->
+{{ .Content }}
+<!-- END_TF_DOCS -->
+</details>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 <h2 id="getting-started">Getting Started</h2>
@@ -106,17 +159,9 @@
    <li><strong>Set your AWS Region:</strong> Set to whatever <code>aws_region</code> you want in <code>variables.tf</code>.</li>
 </ul>
 
-<h3>Terraform State Management</h3>
-<p>Select one:</p>
+<h3>Terraform Cloud State Management</h3>
 <ol>
-   <li>Terraform Cloud</li>
-   <li>Terraform Local CLI</li>
-</ol>
-
-<h4>Terraform Cloud Configuration</h4>
-<p>If you choose Terraform Cloud, please follow the steps below:</p>
-<ol>
-   <li>Create a new <strong>Workspace</strong> in Terraform Cloud.</li>
+   <li>Create a new <strong>Workspace</strong> with github version control workflow in Terraform Cloud.</li>
    <li>In the Variables tab, add the following <strong>Terraform Variables:</strong>
    </li>
    <li>
@@ -126,42 +171,41 @@
       <li><code>AWS_SECRET_ACCESS_KEY</code></li>
    </ul>
    </li>
-</ol>
-
-<h4>Terraform Local CLI Configuration</h4>
-<p>If you choose Terraform Local CLI, please follow the steps below:</p>
-<ol>
-   <li>
-      Comment the <code>backend</code> block in <code>terraform.tf</code>:
-      <pre># backend "remote" {
-#     hostname     = "app.terraform.io"
-#     organization = "my-terraform-aws-projects-2025"
-#     workspaces {
-#     name = "AWS-lex-translator"
-#     }
-# }</pre>
+    <li>
+      Run the command ni Terraform CLI:
+      <pre>terraform login</pre>
+    </li>
+    <li>Create a token and follow the steps in browser to complete the Terraform Cloud Connection.</li>
+    <li>
+      Add the <code>backend</code> block in <code>terraform</code> code block</code>:
+    <pre>backend "remote" {
+  hostname     = "app.terraform.io"
+  organization = &lt;your-organization-name&gt;
+  workspaces {
+    name = &lt;your-workspace-name&gt;
+  }
+}</pre>
    </li>
-   <li>
-    Add the following <strong>Environment Variables</strong> (AWS Credentials):
-    <pre>git bash command:
-export AWS_ACCESS_KEY_ID=&lt;your-aws-access-key-id&gt;
-export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
+    <li>
+      Run the command in Terraform CLI to migrate the state into Terraform Cloud:
+      <pre>terraform init -migrate-state</pre>
+    </li>
 </ol>
 
 <h3>Installation & Deployment</h3>
 <ol>
-   <li>Clone the repository.</li>
-   <li>
-      <strong>Provision Infrastructure:</strong>
-      <ul>
-         <li>
-         <strong>Terraform Cloud</strong> → <strong>Initialize & Apply:</strong> Push your code to GitHub. Terraform Cloud will automatically detect the change, run a <code>plan</code>, and wait for your approval.
-         </li>
-         <li>
-         <strong>Terraform CLI</strong> → <strong>Initialize & Apply:</strong> Run <code>terraform init</code> → <code>terraform plan</code> → <code>terraform apply</code>, and wait for your approval.
-         </li>
-      </ul>
-   </li>
+    <li>
+        <strong>Clone the Repository:</strong>
+        <pre>git clone https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}.git</pre>
+    </li>
+    <li>
+        <strong>Provision Infrastructure:</strong><br>
+        <strong>Terraform Cloud</strong> → <strong>Initialize & Apply:</strong> Push your code to GitHub. Terraform Cloud will automatically detect the change, run a <code>plan</code>, and wait for your approval.
+    </li>
+    <li>
+        <strong>Observe workflow:</strong><br>
+        <strong>GitHub (GitOps)</strong> → <strong>Github actions:</strong> Observe the process/workflow of CI/CD in the actions tab in GitHub.
+    </li>
 </ol>
 
 <h3>Configure Lex V2 Console</h3>
@@ -237,14 +281,61 @@ export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
   <li>Select <strong>TestBotAlias</strong>, then your language (e.g., <strong>English (US)</strong>).</li>
   <li>
     Under <strong>Source</strong>, select your Lambda function (<code>LexTranslationHandler</code>) and the version (<code>$LATEST</code>).<br>
-    <img src="assets/aws-console-link-lambda.png" alt="aws-console-slot-type-config-page" width="400" />
+    <img src="assets/aws-console-link-lambda.png" alt="aws-console-slot-type-config-page" />
   </li>
   <li>
     <strong>Enable Fulfillment:</strong> Go back to your <code>TranslateIntent</code> editor. Scroll to <strong>Fulfillment</strong>, click <strong>Advanced options</strong>, and check <code>Use a Lambda function for fulfillment</code>.<br>
-    <img src="assets/aws-console-fulfillment.png" alt="aws-console-slot-type-config-page" width="400" />
+    <img src="assets/aws-console-fulfillment.png" alt="aws-console-slot-type-config-page" />
   </li>
 </ol>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+<h2 id="gitops">GitOps & CI/CD Workflow</h2>
+<p>This project uses a fully automated GitOps pipeline to ensure code quality and deployment reliability. The <strong>Pre-commit</strong> framework implements a "Shift-Left" strategy, ensuring that code is formatted, documented, and secure before it ever leaves your machine.</p>
+
+<h3>Workflow Files</h3>
+<ol>
+  <li>
+    <strong>Pre-commit</strong>
+    <ul>
+      <li><strong>Tool:</strong> Executes <code>terraform fmt</code>, <code>terraform validate</code>, <code>TFLint</code>, <code>terraform_docs</code> and <code>checkov</code> to ensure the code is clean.</li>
+      <li><strong>Trigger:</strong> Runs on every <strong>git commit</strong>.</li>
+      <li>
+        <strong>Outcome:</strong> If any check fails, the commit is blocked. You fix the error, re-add the file, and commit again.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Continuous Integration (PR)</strong>
+    <ul>
+      <li><strong>Tool:</strong> Executes <code>terraform fmt -check</code>, <code>terraform validate</code> and <code>checkov</code>, then do <code>plan</code> and cost estimation and print it on PR.</li>
+      <li><strong>Trigger:</strong> Runs on every <strong>Pull Request</strong>.</li>
+      <li>
+        <strong>Outcome:</strong> This acts as the "Gatekeeper" before code is merged to <code>main</code>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Continuous Delivery (Deployment)</strong>
+    <ul>
+      <li><strong>Tool:</strong> Terraform Cloud + GitHub Actions OIDC.</li>
+      <li><strong>Trigger:</strong> Merges to the <code>main</code> branch.</li>
+      <li>
+        <strong>Outcome:</strong> The pipeline verifies the infrastructure state and runs a post-deployment health check (<code>verify-lambda.sh</code> & <code>verify-role.sh</code>) to confirm the Rekognition service is responding.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Dynamically update readme documentation</strong>
+    <ul>
+      <li><strong>Tool:</strong> <code>terraform_docs</code> + GitHub Actions.</li>
+      <li><strong>Trigger:</strong> Merges to the <code>main</code> branch.</li>
+      <li>
+        <strong>Outcome:</strong> The pipeline verifies the infrastructure state from Terraform Cloud, retrieve outputs from Terraform Cloud and update the readme documentation file dynamically.
+      </li>
+    </ul>
+  </li>
+</ol>
 
 <h2 id="usage">Usage & Testing</h2>
 <h3>Boundary Test (Slot Elicitation): </h3>
@@ -345,15 +436,43 @@ export AWS_SECRET_ACCESS_KEY=&lt;your-aws-secret-access-key&gt;
 </ul>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
-[contributors-shield]: https://img.shields.io/github/contributors/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
-[contributors-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
-[forks-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/network/members
-[stars-shield]: https://img.shields.io/github/stars/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
-[stars-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
-[issues-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/issues
-[license-shield]: https://img.shields.io/github/license/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge
-[license-url]: https://github.com/ShenLoong99/aws-terraform-lex-translator/blob/master/LICENSE.txt
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>
+  Special thanks to <strong>Tech with Lucy</strong> for the architectural inspiration and excellent AWS tutorials that helped shape this pipeline.
+</p>
+<ul>
+  <li>
+    See her youtube channel here: <a href="https://www.youtube.com/@TechwithLucy" target="_blank">Tech With Lucy</a>
+  </li>
+  <li>
+    Watch her video here: <a href="https://www.youtube.com/watch?v=hiE0El3zs1Y" target="_blank">5 Beginner AWS Cloud Projects To Get You Hired (2025)</a>
+  </li>
+</ul>
+<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+
+[contributors-shield]: https://img.shields.io/github/contributors/{{GITHUB_USER}}/{{REPO_NAME}}.svg?style=for-the-badge
+[contributors-url]: {{REPO_URL}}/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/{{GITHUB_USER}}/{{REPO_NAME}}.svg?style=for-the-badge
+[forks-url]: {{REPO_URL}}/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/{{GITHUB_USER}}/{{REPO_NAME}}.svg?style=for-the-badge
+[stars-url]: {{REPO_URL}}/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/{{GITHUB_USER}}/{{REPO_NAME}}.svg?style=for-the-badge
+[issues-url]: {{REPO_URL}}/issues
+
+[license-shield]: https://img.shields.io/github/license/{{GITHUB_USER}}/{{REPO_NAME}}.svg?style=for-the-badge
+[license-url]: {{REPO_URL}}/blob/master/LICENSE.txt
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/si-kai-tan
+[linkedin-url]: https://www.linkedin.com/in/si-kai-tan/
+
+[ci-shield]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/ci.yml
+
+[cd-shield]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/cd.yml/badge.svg
+[cd-url]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/cd.yml
+
+[docs-shield]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/documentation.yml/badge.svg
+[docs-url]: https://github.com/{{GITHUB_USER}}/{{REPO_NAME}}/actions/workflows/documentation.yml

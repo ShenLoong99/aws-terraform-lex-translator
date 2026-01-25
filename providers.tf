@@ -2,12 +2,12 @@ terraform {
   required_version = ">= 1.0.0"
 
   backend "remote" {
-      hostname     = "app.terraform.io"
-      organization = "my-terraform-aws-projects-2025"
+    hostname     = "app.terraform.io"
+    organization = "my-terraform-aws-projects-2025"
 
-      workspaces {
+    workspaces {
       name = "AWS-lex-translator"
-      }
+    }
   }
 
   required_providers {
@@ -19,5 +19,14 @@ terraform {
       source  = "hashicorp/archive"
       version = "~> 2.0"
     }
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+
+  # Default tags automatically apply to all supported resources.
+  default_tags {
+    tags = local.common_tags
   }
 }

@@ -157,7 +157,7 @@ This section is automatically updated with the latest infrastructure details.
 <ul>
    <li><strong>Terraform CLI (v1.0+) / Terraform Cloud(optional)</strong> for IaC deployment.</li>
    <li><strong>AWS CLI</strong> configured with appropriate credentials.</li>
-   <li><strong>Python 3.9+</strong> for Lambda development.</li>
+   <li><strong>Python 3.13+</strong> for Lambda development.</li>
    <li><strong>Set your AWS Region:</strong> Set to whatever <code>aws_region</code> you want in <code>variables.tf</code>.</li>
 </ul>
 

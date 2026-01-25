@@ -2,7 +2,7 @@
 locals {
   common_tags = {
     Project     = var.project_name
-    Environment = "Prod"
+    Environment = "Dev"
     ManagedBy   = "Terraform"
     Owner       = "ShenLoong"
   }

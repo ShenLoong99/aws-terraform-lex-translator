@@ -179,6 +179,8 @@ This section is automatically updated with the latest infrastructure details.
 
 | Name                                                                                         | Description                                                  |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| <a name="output_aws_region"></a> [aws_region](#output_aws_region)                            | The AWS region to deploy to                                  |
+| <a name="output_function_name"></a> [function_name](#output_function_name)                   | The function name of the translator lambda function          |
 | <a name="output_iam_role_arn"></a> [iam_role_arn](#output_iam_role_arn)                      | The ARN of the IAM role used by the Lambda                   |
 | <a name="output_lambda_function_arn"></a> [lambda_function_arn](#output_lambda_function_arn) | The ARN of the Lambda function to be used in Lex fulfillment |
 

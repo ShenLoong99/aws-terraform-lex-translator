@@ -30,12 +30,12 @@ def build_response(message_text, intent_name, slots):
 
 def lambda_handler(event, context):
     logger.info(f"Received event: {event}")
-    
+
     # 1. Extract Intent and Slots
     intent = event.get('sessionState', {}).get('intent', {})
     intent_name = intent.get('name')
     slots = intent.get('slots', {})
-    
+
     # 2. Safely get slot values
     try:
         phrase = slots['phrase']['value']['interpretedValue']
@@ -51,7 +51,7 @@ def lambda_handler(event, context):
 
     # 3. Call Amazon Translate
     translate_client = boto3.client('translate')
-    
+
     try:
         response = translate_client.translate_text(
             Text=phrase,
@@ -60,7 +60,7 @@ def lambda_handler(event, context):
         )
         translated_text = response.get('TranslatedText')
         final_message = f"Here is the translation: {translated_text}"
-        
+
     except Exception as e:
         logger.error(f"AWS Translate Error: {str(e)}")
         final_message = "Sorry, I encountered an error while translating your text."

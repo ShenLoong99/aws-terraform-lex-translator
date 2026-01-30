@@ -48,7 +48,7 @@
       <li><a href="#usage">Usage</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#challenges-faced">Challenges</a></li>
-      <li><a href="#cost-optimization">Cost Optimization</a></li>
+      <li><a href="#well-architected">AWS Well-Architected Framework Alignment</a></li>
       <li><a href="#acknowledgements">Acknowledgements</a></li>
    </ol>
 </details>
@@ -148,42 +148,44 @@ This section is automatically updated with the latest infrastructure details.
 <summary><b>Detailed Infrastructure Specifications</b></summary>
 
 <!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_archive"></a> [archive](#requirement\_archive) | ~> 2.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
+| Name                                                                     | Version  |
+| ------------------------------------------------------------------------ | -------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.0.0 |
+| <a name="requirement_archive"></a> [archive](#requirement_archive)       | ~> 2.0   |
+| <a name="requirement_aws"></a> [aws](#requirement_aws)                   | ~> 5.0   |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_iam"></a> [iam](#module\_iam) | ./modules/iam | n/a |
-| <a name="module_lambda"></a> [lambda](#module\_lambda) | ./modules/lambda | n/a |
+| Name                                                  | Source           | Version |
+| ----------------------------------------------------- | ---------------- | ------- |
+| <a name="module_iam"></a> [iam](#module_iam)          | ./modules/iam    | n/a     |
+| <a name="module_lambda"></a> [lambda](#module_lambda) | ./modules/lambda | n/a     |
 
 ## Resources
 
-| Name | Type |
-|------|------|
+| Name                                                                                                                                     | Type     |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | [aws_cloudwatch_log_group.lambda_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region to deploy to | `string` | `"ap-southeast-1"` | no |
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project for resource naming | `string` | `"lex-translator-bot"` | no |
+| Name                                                                  | Description                                 | Type     | Default                | Required |
+| --------------------------------------------------------------------- | ------------------------------------------- | -------- | ---------------------- | :------: |
+| <a name="input_aws_region"></a> [aws_region](#input_aws_region)       | The AWS region to deploy to                 | `string` | `"ap-southeast-1"`     |    no    |
+| <a name="input_project_name"></a> [project_name](#input_project_name) | The name of the project for resource naming | `string` | `"lex-translator-bot"` |    no    |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_aws_region"></a> [aws\_region](#output\_aws\_region) | The AWS region to deploy to |
-| <a name="output_function_name"></a> [function\_name](#output\_function\_name) | The function name of the translator lambda function |
-| <a name="output_iam_role_arn"></a> [iam\_role\_arn](#output\_iam\_role\_arn) | The ARN of the IAM role used by the Lambda |
-| <a name="output_lambda_function_arn"></a> [lambda\_function\_arn](#output\_lambda\_function\_arn) | The ARN of the Lambda function to be used in Lex fulfillment |
+| Name                                                                                         | Description                                                  |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| <a name="output_aws_region"></a> [aws_region](#output_aws_region)                            | The AWS region to deploy to                                  |
+| <a name="output_function_name"></a> [function_name](#output_function_name)                   | The function name of the translator lambda function          |
+| <a name="output_iam_role_arn"></a> [iam_role_arn](#output_iam_role_arn)                      | The ARN of the IAM role used by the Lambda                   |
+| <a name="output_lambda_function_arn"></a> [lambda_function_arn](#output_lambda_function_arn) | The ARN of the Lambda function to be used in Lex fulfillment |
+
 <!-- END_TF_DOCS -->
 </details>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
@@ -506,26 +508,79 @@ This section is automatically updated with the latest infrastructure details.
 </table>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
-<h2 id="cost-optimization">Cost Optimization</h2>
-<ul>
-   <li><strong>Resource Limits:</strong> Lambda is restricted to 128MB memory and a 10s timeout to prevent runaway billing.</li>
-   <li><strong>Log Retention:</strong> CloudWatch logs are set to a 7-day retention period rather than "Never Expire" to minimize storage costs.</li>
-   <li><strong>Explicit Cleanup:</strong> Every resource, including auto-generated log groups, is tracked by Terraform to ensure $0 residual cost after <code>terraform destroy</code>.</li>
-</ul>
-<div align="right"><a href="#readme-top">↑ Back to Top</a></div>
+<h2 id="aws-well-architected">🏛️ AWS Well-Architected Framework Alignment</h2>
 
-<h2 id="acknowledgements">Acknowledgements</h2>
-<p>
-  Special thanks to <strong>Tech with Lucy</strong> for the architectural inspiration and excellent AWS tutorials that helped shape this pipeline.
-</p>
-<ul>
-  <li>
-    See her youtube channel here: <a href="https://www.youtube.com/@TechwithLucy" target="_blank">Tech With Lucy</a>
-  </li>
-  <li>
-    Watch her video here: <a href="https://www.youtube.com/watch?v=hiE0El3zs1Y" target="_blank">5 Beginner AWS Cloud Projects To Get You Hired (2025)</a>
-  </li>
-</ul>
+<p>This project is designed following the <strong>AWS Well-Architected Framework</strong>, ensuring a reliable, secure, and cost-efficient cloud-native application.</p>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="30%">Pillar</th>
+      <th width="70%">Implementation in this Project</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Operational Excellence</strong></td>
+      <td>
+        <ul>
+          <li><strong>Infrastructure as Code (IaC):</strong> Fully provisioned via Terraform, allowing for version-controlled and repeatable deployments.</li>
+          <li><strong>Automated CI/CD:</strong> GitHub Actions automates testing (Infrastructure CI), documentation updates, and deployment (CD).</li>
+          <li><strong>Observability:</strong> Integrated CloudWatch logging within the Lambda handler for real-time debugging and monitoring.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>2. Security</strong></td>
+      <td>
+        <ul>
+          <li><strong>Principle of Least Privilege:</strong> IAM roles are scoped specifically to required actions (e.g., <code>translate:TranslateText</code> and <code>comprehend:DetectDominantLanguage</code>).</li>
+          <li><strong>Resource-Based Policies:</strong> Lambda only allows invocation from the specific Lex V2 service principal.</li>
+          <li><strong>Secure Automation:</strong> Uses GitHub Apps and encrypted secrets (BOT_APP_ID/PRIVATE_KEY) to manage branch protection bypasses.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>3. Reliability</strong></td>
+      <td>
+        <ul>
+          <li><strong>Serverless Architecture:</strong> Utilizes AWS Lambda and Amazon Lex, which automatically scale and provide built-in high availability across multiple Availability Zones.</li>
+          <li><strong>Error Handling:</strong> Python logic includes try-except blocks to manage API timeouts or missing slot data, returning graceful fallback messages to the user.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>4. Performance Efficiency</strong></td>
+      <td>
+        <ul>
+          <li><strong>Event-Driven Design:</strong> The architecture triggers only when needed, minimizing idle latency.</li>
+          <li><strong>NLU Optimization:</strong> Lex V2 manages the complex Natural Language Understanding, offloading computational heavy lifting from the application logic.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>5. Cost Optimization</strong></td>
+      <td>
+        <ul>
+          <li><strong>Resource Limits:</strong> Lambda is restricted to 128MB memory and a 10s timeout to prevent runaway billing.</li>
+          <li><strong>Log Retention:</strong> CloudWatch logs are set to a 7-day retention period rather than "Never Expire" to minimize storage costs.</li>
+          <li><strong>Explicit Cleanup:</strong> Every resource, including auto-generated log groups, is tracked by Terraform to ensure $0 residual cost after <code>terraform destroy</code>.</li>
+          <li><strong>Serverless (Pay-as-you-go):</strong> Zero cost during idle time. Expenses are only incurred during active Lex sessions and per-character translation.</li>
+          <li><strong>Resource Sizing:</strong> Lambda is configured with minimal memory (128MB) since the workload is I/O bound rather than CPU intensive.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>6. Sustainability</strong></td>
+      <td>
+        <ul>
+          <li><strong>Minimized Carbon Footprint:</strong> By using high-utilization shared infrastructure (Serverless), the project reduces the environmental impact compared to always-on EC2 instances.</li>
+          <li><strong>Managed Services:</strong> Leveraging Amazon Translate and Lex reduces the need to train and run custom machine learning models.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
 
 [contributors-shield]: https://img.shields.io/github/contributors/ShenLoong99/aws-terraform-lex-translator.svg?style=for-the-badge

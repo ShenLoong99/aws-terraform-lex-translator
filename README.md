@@ -148,44 +148,42 @@ This section is automatically updated with the latest infrastructure details.
 <summary><b>Detailed Infrastructure Specifications</b></summary>
 
 <!-- BEGIN_TF_DOCS -->
-
 ## Requirements
 
-| Name                                                                     | Version  |
-| ------------------------------------------------------------------------ | -------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.0.0 |
-| <a name="requirement_archive"></a> [archive](#requirement_archive)       | ~> 2.0   |
-| <a name="requirement_aws"></a> [aws](#requirement_aws)                   | ~> 5.0   |
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_archive"></a> [archive](#requirement\_archive) | ~> 2.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
 ## Modules
 
-| Name                                                  | Source           | Version |
-| ----------------------------------------------------- | ---------------- | ------- |
-| <a name="module_iam"></a> [iam](#module_iam)          | ./modules/iam    | n/a     |
-| <a name="module_lambda"></a> [lambda](#module_lambda) | ./modules/lambda | n/a     |
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_iam"></a> [iam](#module\_iam) | ./modules/iam | n/a |
+| <a name="module_lambda"></a> [lambda](#module\_lambda) | ./modules/lambda | n/a |
 
 ## Resources
 
-| Name                                                                                                                                     | Type     |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Name | Type |
+|------|------|
 | [aws_cloudwatch_log_group.lambda_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 
 ## Inputs
 
-| Name                                                                  | Description                                 | Type     | Default                | Required |
-| --------------------------------------------------------------------- | ------------------------------------------- | -------- | ---------------------- | :------: |
-| <a name="input_aws_region"></a> [aws_region](#input_aws_region)       | The AWS region to deploy to                 | `string` | `"ap-southeast-1"`     |    no    |
-| <a name="input_project_name"></a> [project_name](#input_project_name) | The name of the project for resource naming | `string` | `"lex-translator-bot"` |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region to deploy to | `string` | `"ap-southeast-1"` | no |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project for resource naming | `string` | `"lex-translator-bot"` | no |
 
 ## Outputs
 
-| Name                                                                                         | Description                                                  |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| <a name="output_aws_region"></a> [aws_region](#output_aws_region)                            | The AWS region to deploy to                                  |
-| <a name="output_function_name"></a> [function_name](#output_function_name)                   | The function name of the translator lambda function          |
-| <a name="output_iam_role_arn"></a> [iam_role_arn](#output_iam_role_arn)                      | The ARN of the IAM role used by the Lambda                   |
-| <a name="output_lambda_function_arn"></a> [lambda_function_arn](#output_lambda_function_arn) | The ARN of the Lambda function to be used in Lex fulfillment |
-
+| Name | Description |
+|------|-------------|
+| <a name="output_aws_region"></a> [aws\_region](#output\_aws\_region) | The AWS region to deploy to |
+| <a name="output_function_name"></a> [function\_name](#output\_function\_name) | The function name of the translator lambda function |
+| <a name="output_iam_role_arn"></a> [iam\_role\_arn](#output\_iam\_role\_arn) | The ARN of the IAM role used by the Lambda |
+| <a name="output_lambda_function_arn"></a> [lambda\_function\_arn](#output\_lambda\_function\_arn) | The ARN of the Lambda function to be used in Lex fulfillment |
 <!-- END_TF_DOCS -->
 </details>
 <div align="right"><a href="#readme-top">↑ Back to Top</a></div>
